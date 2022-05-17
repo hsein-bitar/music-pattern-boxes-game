@@ -1,5 +1,12 @@
-// save name and display it
+window.onload = () => {
+    console.log('loaded');
+    //TODO
+    // disable();
+}
 
+
+//TODO ref music files
+let music = [1, 2, 3, 4];
 
 // reference html elements
 let user = document.getElementById("user");
@@ -10,7 +17,7 @@ let start = document.getElementById('level');
 //initiate level at 1
 let currentLevel = 1;
 let user_clicks = [];
-let pattern;
+let pattern = [];
 
 
 
@@ -38,34 +45,11 @@ box.forEach((element) => element.addEventListener("click", (e) => {
     }
 }));
 
-
-
-let user_prompt = prompt('Hey, who are you 👀?');
-let user_name = user_prompt ? user_prompt.split(" ") : "user 007".split(" ");
-user_name = user_name.map(x => (x.charAt(0).toUpperCase() + x.slice(1)));
-user.innerText = user_name.join(' ');
-console.log(user_name);
-user.classList.remove('none');
-
-
-
-
-
-
-
-
-
-
-// prompt user for readiness
-
-// play the pattern
-
-
-
-let music = [1, 2, 3, 4];
-
-
 // functions
+
+function enable() { }
+function disable() { }
+
 function playPattern(pattern) {
 
     // TODO play notes
@@ -77,16 +61,17 @@ function playPattern(pattern) {
 function gameEnd(bool) {
     if (bool) {
         console.log('green');
-
+        disable();
     } else {
         console.log('lost');
+        disable();
     }
 }
 
 function startLevel(level) {
-    currentLevel = level;
     pattern = generatePattern(level);
     playPattern(pattern);
+    enable();
 }
 
 function generatePattern(level) {
@@ -97,3 +82,11 @@ function generatePattern(level) {
     console.log(pattern);
     return pattern;
 }
+
+
+let user_prompt = prompt('Hey, who are you 👀? Enter your name please!');
+let user_name = user_prompt ? user_prompt.split(" ") : "user 007".split(" ");
+user_name = user_name.map(x => (x.charAt(0).toUpperCase() + x.slice(1)));
+user.innerText = user_name.join(' ');
+console.log(user_name);
+user.classList.remove('none');

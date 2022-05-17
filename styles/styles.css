@@ -64,6 +64,7 @@ body {
 
 .box:hover {
     border: none;
+    transform: scale(0.9);
     color: black;
 }
 
