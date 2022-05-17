@@ -15,7 +15,6 @@ body {
     box-sizing: border-box;
 }
 
-
 .container {
     height: 100vh;
     width: 100vw;
@@ -24,6 +23,14 @@ body {
     align-items: center;
     justify-content: space-evenly;
     background-color: rgb(33, 33, 33);
+}
+
+#level {
+    z-index: 10;
+}
+
+#level:hover {
+    color: rgb(68, 255, 0);
 }
 
 .board {
@@ -38,6 +45,11 @@ body {
     background-color: azure;
 }
 
+.board:hover {
+    box-shadow: 0px 0px 25px rgb(255, 86, 86);
+
+}
+
 .box {
     display: flex;
     text-align: center;
@@ -47,10 +59,19 @@ body {
     height: 35%;
     border-radius: 20px;
     border: 2px solid rgb(67, 67, 67);
+    box-shadow: 0px 0px 5px rgb(80, 80, 80);
 }
 
+.box:hover {
+    border: none;
+    color: black;
+}
+
+
+
 .glow {
-    box-shadow: 0px 0px 10px rgb(0, 0, 0);
+    box-shadow: 0px 0px 20px rgb(102, 0, 0);
+    color: blue !important;
 }
 
 
@@ -67,7 +88,7 @@ body {
 }
 
 .yellow {
-    background-color: papayawhip;
+    background-color: rgb(255, 195, 98);
 }
 
 /* utility */
@@ -85,7 +106,7 @@ body {
 
 /* prompt */
 .prompt {
-    z-index: 99;
+    z-index: 9;
     width: 100vw;
     height: 100vh;
     position: absolute;
