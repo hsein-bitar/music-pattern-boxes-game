@@ -15,15 +15,6 @@ body {
     box-sizing: border-box;
 }
 
-.prompt-dialogue {
-    height: 30vh;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* transform: translateY(-40%); */
-    border: 5px solid red;
-}
 
 .container {
     height: 100vh;
@@ -48,10 +39,14 @@ body {
 }
 
 .box {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     width: 35%;
     height: 35%;
     border-radius: 20px;
-    border: 1px solid red;
+    border: 2px solid rgb(67, 67, 67);
 }
 
 .glow {
@@ -73,4 +68,35 @@ body {
 
 .yellow {
     background-color: papayawhip;
+}
+
+/* utility */
+.none {
+    display: none;
+}
+
+/* prompt */
+.prompt {
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(254, 196, 196, 0.8);
+}
+
+.prompt-dialogue {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 30vh;
+    line-height: 6vh;
+    font-weight: lighter;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    border: 5px solid red;
 }
