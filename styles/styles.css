@@ -75,6 +75,14 @@ body {
     display: none;
 }
 
+#user {
+    position: absolute;
+    color: aquamarine;
+    top: 40px;
+    right: 40px;
+
+}
+
 /* prompt */
 .prompt {
     z-index: 99;
