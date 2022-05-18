@@ -10,8 +10,9 @@ let music = [1, 2, 3, 4];
 
 // reference html elements
 let user = document.getElementById("user");
-let box = document.querySelectorAll('.box');
-let start = document.getElementById('level');
+let board = document.querySelector('#board');//enable
+let box = document.querySelectorAll('.box'); //enable
+let start = document.getElementById('level'); //enable
 
 
 //initiate level at 1
@@ -52,7 +53,7 @@ function disable() { }
 
 function playPattern(pattern) {
 
-    // TODO play notes
+    // TODO play notes after waiting
     for (i in pattern) {
         console.log(i);
     }
@@ -69,6 +70,8 @@ function gameEnd(bool) {
 }
 
 function startLevel(level) {
+    start.innerText = `Level ${level}`
+    //disable button
     pattern = generatePattern(level);
     playPattern(pattern);
     enable();
