@@ -66,6 +66,7 @@ body {
     border: none;
     transform: scale(0.9);
     color: black;
+    filter: saturate(5);
 }
 
 .red {

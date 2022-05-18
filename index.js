@@ -18,48 +18,56 @@ let user_clicks = [];
 let pattern = [];
 
 //TODO ref music files
-let music = ['green', 'yellow', 'red', 'blue'];
+// let music = ['green', 'yellow', 'red', 'blue'];
+let music = [
+    new Audio("assets/sounds/green.mp3"),
+    new Audio("assets/sounds/yellow.mp3"),
+    new Audio("assets/sounds/red.mp3"),
+    new Audio("assets/sounds/blue.mp3")];
 
 
-start.addEventListener('click', e => startLevel(currentLevel));
 
+let clickHandler = (e) => {
+    e.target.classList.add("glow");
+    setTimeout(() => { e.target.classList.remove("glow") }, 200);
+    if (user_clicks.length < currentLevel) {
+        user_clicks.push(e.target.id);
+        if (pattern[user_clicks.length - 1] != user_clicks[user_clicks.length - 1]) {
+            gameEnd(0);
+        }
+    }
+    if (user_clicks.length == currentLevel) {
+        if (pattern[user_clicks.length - 1] == user_clicks[user_clicks.length - 1]) {
+            currentLevel++
+            gameEnd(e.target.id);
+        } else {
+            gameEnd(0);
+        }
+    }
+}
 
 
 // functions
 function enable() {
+    start.removeEventListener('click', e => startLevel(currentLevel));
     // add onclicks to boxes
     // checks if so far sequence matches, game over when it does not
-    box.forEach((element) => element.addEventListener("click", (e) => {
-        e.target.classList.add("glow");
-        setTimeout(() => { e.target.classList.remove("glow") }, 200);
-        if (user_clicks.length < currentLevel) {
-            user_clicks.push(e.target.id);
-            if (pattern[user_clicks.length - 1] != user_clicks[user_clicks.length - 1]) {
-                gameEnd(0);
-            }
-        }
-        if (user_clicks.length == currentLevel) {
-            if (pattern[user_clicks.length - 1] == user_clicks[user_clicks.length - 1]) {
-                currentLevel++
-                gameEnd(1);
-            } else {
-                gameEnd(0);
-            }
-        }
-    }));
+    box.forEach((element) => element.addEventListener("click", clickHandler));
 
     board.classList.add('enabled');
     box.forEach(element => element.classList.add('enabled'))
-    start.classList.add('enabled');
+    start.classList.remove('enabled');
 }
 
 
 function disable() {
+    start.addEventListener('click', e => startLevel(currentLevel));
+    start.innerText = `Start`
     //remove event listeners
-    box.forEach(element => element.removeEventListener("click", (){ }));
+    box.forEach(element => element.removeEventListener("click", clickHandler));
     board.classList.remove('enabled');
     box.forEach(element => element.classList.remove('enabled'));
-    start.classList.remove('enabled');
+    start.classList.add('enabled');
 
 }
 
@@ -73,7 +81,7 @@ function playPattern(pattern) {
 
 function gameEnd(bool) {
     if (bool) {
-        console.log('green');
+        console.log('lost', bool);
         disable();
     } else {
         console.log('lost');
