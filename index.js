@@ -6,6 +6,7 @@ let level = document.getElementById("level"); //show after prompt
 let board = document.querySelector('#board');//enable
 let boxes = document.querySelectorAll('.box'); //enable
 let start = document.getElementById('start'); //enable
+let winlose = document.getElementById('winlose'); //enable
 
 // getting user nme
 let user_prompt = prompt('Hey, who are you 👀? Enter your name please!');
@@ -107,10 +108,26 @@ function endGame(bool) {
         currentLevel++;
         level.innerText = currentLevel;
         pattern.push(Math.floor(Math.random() * 4));
-        playNote(pattern[pattern.length - 1]);
-        enable();
-    } else {
-        console.log('lost');
+
+        //display you won
+        winlose.innerText = `You Won lvl ${currentLevel - 1}`
+        winlose.classList.remove('none');
         disable();
+        setTimeout(() => {
+            //wait a second
+            playNote(pattern[pattern.length - 1]);
+            winlose.classList.add('none');
+            enable();
+        }, 800);
+
+    } else {
+        //display you lost
+        winlose.innerText = `You lost lvl ${currentLevel}`
+        winlose.classList.remove('none');
+        disable();
+        setTimeout(() => {
+            //wait a second
+            winlose.classList.add('none');
+        }, 800);
     }
 }
