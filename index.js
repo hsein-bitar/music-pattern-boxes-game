@@ -57,7 +57,6 @@ let boxClickHandler = (e) => {
     }
     if (user_clicks.length == currentLevel) {
         if (pattern[user_clicks.length - 1] == user_clicks[user_clicks.length - 1]) {
-            currentLevel++
             endGame(1);
         } else {
             endGame(0);
