@@ -25,11 +25,12 @@ body {
     background-color: rgb(33, 33, 33);
 }
 
-#level {
+#start {
     z-index: 10;
+    transform: translateY(100%);
 }
 
-#level.enabled:hover {
+#start.enabled:hover {
     color: rgb(68, 255, 0);
 }
 
@@ -69,6 +70,13 @@ body {
     filter: saturate(5);
 }
 
+.box.glow {
+    border: none;
+    transform: scale(0.9);
+    color: black;
+    filter: saturate(5);
+}
+
 .red {
     background-color: salmon;
 }
@@ -90,12 +98,17 @@ body {
     display: none;
 }
 
-#user {
+#stats {
     position: absolute;
-    color: aquamarine;
-    top: 40px;
-    right: 40px;
+    font-size: 0.5em;
+    line-height: 2;
+    text-align: start;
+    top: 30px;
+    right: 30px;
+}
 
+#stats * {
+    color: aquamarine;
 }
 
 .prompt {
