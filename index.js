@@ -48,6 +48,7 @@ start.addEventListener('click', startGame);
 
 //click handlers
 let boxClickHandler = (e) => {
+    e.preventDefault();
     playNote(e.target.id);
     if (user_clicks.length < currentLevel) {
         user_clicks.push(e.target.id);
@@ -63,11 +64,6 @@ let boxClickHandler = (e) => {
         }
     }
 }
-
-
-
-
-
 
 
 
