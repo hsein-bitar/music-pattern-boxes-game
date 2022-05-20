@@ -23,7 +23,6 @@ let music = [
     new Audio("assets/sounds/wrong.mp3"),
 ];
 
-
 //Game variables
 let currentLevel;
 let user_clicks = [];
@@ -119,8 +118,8 @@ function endGame(bool) {
         winlose.classList.remove('none');
         disable();
         setTimeout(() => {
-            //wait a second
+            //wait two seconds
             winlose.classList.add('none');
-        }, 3000);
+        }, 1000);
     }
 }
