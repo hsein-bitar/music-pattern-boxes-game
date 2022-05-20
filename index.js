@@ -15,13 +15,13 @@ user_name = user_name.map(x => (x.charAt(0).toUpperCase() + x.slice(1)));
 user.innerText = user_name.join(' ');
 stats.classList.remove('none');
 
-//TODO ref music files
-// let music = ['green', 'yellow', 'red', 'blue'];
 let music = [
     new Audio("assets/sounds/green.mp3"),
-    new Audio("assets/sounds/yellow.mp3"),
     new Audio("assets/sounds/red.mp3"),
-    new Audio("assets/sounds/blue.mp3")];
+    new Audio("assets/sounds/yellow.mp3"),
+    new Audio("assets/sounds/blue.mp3"),
+    new Audio("assets/sounds/wrong.mp3"),
+];
 
 
 //Game variables
@@ -36,16 +36,10 @@ let startGame = (e) => {
     level.innerText = currentLevel;
     pattern = [Math.floor(Math.random() * 4)]
     playNote(pattern[pattern.length - 1]);
-    //TODO supposed to disable start button
     enable();
 }
 
-
-
 start.addEventListener('click', startGame);
-
-
-
 
 //click handlers
 let boxClickHandler = (e) => {
@@ -65,8 +59,6 @@ let boxClickHandler = (e) => {
         }
     }
 }
-
-
 
 // helper functions
 function playNote(note) {
@@ -121,6 +113,7 @@ function endGame(bool) {
         }, 800);
 
     } else {
+        music[4].play()
         //display you lost
         winlose.innerText = `You lost lvl ${currentLevel}`
         winlose.classList.remove('none');
@@ -128,6 +121,6 @@ function endGame(bool) {
         setTimeout(() => {
             //wait a second
             winlose.classList.add('none');
-        }, 800);
+        }, 3000);
     }
 }
