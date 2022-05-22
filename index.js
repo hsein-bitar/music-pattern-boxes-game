@@ -112,6 +112,7 @@ function endGame(bool) {
         }, 800);
 
     } else {
+        user_clicks = [];
         music[4].play()
         //display you lost
         winlose.innerText = `You lost lvl ${currentLevel}`
